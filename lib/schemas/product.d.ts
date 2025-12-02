@@ -1313,8 +1313,10 @@ export interface AttributeTreeNode {
  * Parameters for getting attribute tree
  */
 export type GetAttributeTreeParams = {
-    /** Category ID */
-    category_id: number;
+    // /** Category ID */
+    // category_id: number;
+    /** List of category IDs */
+    category_id_list: number|sring|number[]|string[];
     /** Language */
     language?: string;
 };
