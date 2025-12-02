@@ -7,30 +7,37 @@
   "exports": {
     ".": {
       "import": "./lib/sdk.js",
+      "require": "./lib/sdk.js",
       "types": "./lib/sdk.d.ts"
     },
     "./schemas": {
       "import": "./lib/schemas/index.js",
+      "require": "./lib/schemas/index.js",
       "types": "./lib/schemas/index.d.ts"
     },
     "./schemas/*": {
       "import": "./lib/schemas/*.js",
+      "require": "./lib/schemas/*.js",
       "types": "./lib/schemas/*.d.ts"
     },
     "./managers": {
       "import": "./lib/managers/index.js",
+      "require": "./lib/managers/index.js",
       "types": "./lib/managers/index.d.ts"
     },
     "./managers/*": {
       "import": "./lib/managers/*.js",
+      "require": "./lib/managers/*.js",
       "types": "./lib/managers/*.d.ts"
     },
     "./storage": {
       "import": "./lib/storage/index.js",
+      "require": "./lib/storage/index.js",
       "types": "./lib/storage/index.d.ts"
     },
     "./storage/*": {
       "import": "./lib/storage/*.js",
+      "require": "./lib/storage/*.js",
       "types": "./lib/storage/*.d.ts"
     }
   },

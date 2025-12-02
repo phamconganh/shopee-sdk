@@ -3,7 +3,7 @@ import { ShopeeConfig } from "./sdk.js";
 import { FetchOptions } from "./schemas/fetch.js";
 import { ShopeeApiError, ShopeeSdkError } from "./errors.js";
 import { generateSignature } from "./utils/signature.js";
-import { SDK_VERSION } from "./version.js";
+// import { SDK_VERSION } from "./version.js";
 
 export class ShopeeFetch {
   public static async fetch<T>(
@@ -64,7 +64,7 @@ export class ShopeeFetch {
     // Prepare headers
     const headers = new Headers();
     headers.set("Content-Type", "application/json");
-    headers.set("User-Agent", `congminh1254/shopee-sdk/v${SDK_VERSION}`);
+    // headers.set("User-Agent", `congminh1254/shopee-sdk/v${SDK_VERSION}`);
     if (options.headers) {
       Object.entries(options.headers).forEach(([key, value]) => {
         headers.set(key, value as string);
@@ -90,13 +90,14 @@ export class ShopeeFetch {
         const arrayBuffer = await response.arrayBuffer();
         return Buffer.from(arrayBuffer) as unknown as T;
       }
-
-      const responseData: unknown =
-        responseType?.indexOf("application/json") !== -1
-          ? await response.json()
-          : await response.text();
-
-      if (responseType?.indexOf("application/json") !== -1) {
+      const isJsonResponse = responseType?.indexOf("application/json") !== -1;
+      const responseData: unknown = isJsonResponse
+        ? await response.json()
+        : await response.text();
+      if (!response.ok) {
+        throw new ShopeeApiError(response.status, responseData);
+      }
+      if (isJsonResponse) {
         // Type guard for JSON response with error field
         const jsonData = responseData as Record<string, unknown>;
         if (jsonData.error) {
