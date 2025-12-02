@@ -3,7 +3,7 @@ import { ShopeeConfig } from "./sdk.js";
 import { FetchOptions } from "./schemas/fetch.js";
 import { ShopeeApiError, ShopeeSdkError } from "./errors.js";
 import { generateSignature } from "./utils/signature.js";
-import { SDK_VERSION } from "./version.js";
+// import { SDK_VERSION } from "./version.js";
 
 function isBlobLike(value: unknown): value is Blob {
   return (
@@ -150,7 +150,7 @@ export class ShopeeFetch {
     if (!isMultipart) {
       headers.set("Content-Type", "application/json");
     }
-    headers.set("User-Agent", `congminh1254/shopee-sdk/v${SDK_VERSION}`);
+    // headers.set("User-Agent", `congminh1254/shopee-sdk/v${SDK_VERSION}`);
     if (options.headers) {
       Object.entries(options.headers).forEach(([key, value]) => {
         headers.set(key, value as string);
@@ -181,6 +181,10 @@ export class ShopeeFetch {
       const isJson = !responseType || !!responseType.toLowerCase().includes("json");
 
       const responseData: unknown = isJson ? await response.json() : await response.text();
+
+      if (!response.ok) {
+        throw new ShopeeApiError(response.status, responseData);
+      }
 
       if (isJson) {
         // Type guard for JSON response with error field
