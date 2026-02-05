@@ -82,6 +82,7 @@ export class ShopeeFetch {
     try {
       const response: Response = await fetch(url.toString(), requestOptions);
       const responseType = response.headers.get("Content-Type");
+<<<<<<< HEAD
 
       if (
         responseType?.includes("application/pdf") ||
@@ -92,6 +93,11 @@ export class ShopeeFetch {
       }
       const isJsonResponse = responseType?.indexOf("application/json") !== -1;
       const responseData: unknown = isJsonResponse ? await response.json() : await response.text();
+=======
+      const isJsonResponse = responseType?.indexOf("application/json") !== -1;
+      const responseData = isJsonResponse ? await response.json() : await response.text();
+
+>>>>>>> 8e5445a (chore: update husky hooks and fix types)
       if (!response.ok) {
         throw new ShopeeApiError(response.status, responseData);
       }
