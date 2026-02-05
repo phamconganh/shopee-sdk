@@ -143,7 +143,8 @@ main.ts
 
 # Auto-generated version file
 src/version.ts
-lib/
+# lib/
+lib/__tests__/
 
 # Auto-generated TypeDoc files
 docs/api/
