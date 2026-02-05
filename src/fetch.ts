@@ -99,7 +99,7 @@ export class ShopeeFetch {
       }
       if (isJsonResponse) {
         // Type guard for JSON response with error field
-        const jsonData = responseData as Record<string, unknown>;
+        const jsonData: any = responseData;
         if (jsonData.error) {
           // Handle invalid access token error
           if (jsonData.error === "invalid_acceess_token" && options.auth) {
@@ -115,9 +115,7 @@ export class ShopeeFetch {
           }
           throw new ShopeeApiError(response.status, jsonData);
         }
-
-        const data = responseData as T;
-        return data;
+        return responseData as T;
       }
       throw new ShopeeSdkError(`Unknown response type: ${responseType}\n${responseData}`);
     } catch (error: unknown) {
