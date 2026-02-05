@@ -358,9 +358,8 @@ export interface EscrowDetailBatchItem {
  */
 export interface GetEscrowDetailBatchResponse extends BaseResponse {
     response: {
-        /** List of escrow details */
-        order_income_list: EscrowDetailBatchItem[];
-    };
+        escrow_detail: EscrowDetailBatchItem;
+    }[];
 }
 /**
  * Parameters for getting wallet transaction list
