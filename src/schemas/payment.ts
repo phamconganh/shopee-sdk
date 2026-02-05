@@ -474,10 +474,13 @@ export interface EscrowDetailBatchItem {
  * Response for get escrow detail batch API
  */
 export interface GetEscrowDetailBatchResponse extends BaseResponse {
-  response: {
-    /** List of escrow details */
-    order_income_list: EscrowDetailBatchItem[];
-  };
+  // response obj escrow_detail[]
+  // response: {
+  //   /** List of escrow details */
+  //   order_income_list: EscrowDetailBatchItem[];
+  // };
+  // response []obj escrow_detail
+  response: { escrow_detail: EscrowDetailBatchItem }[];
 }
 
 /**
