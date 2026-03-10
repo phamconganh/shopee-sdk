@@ -91,9 +91,7 @@ export class ShopeeFetch {
         return Buffer.from(arrayBuffer) as unknown as T;
       }
       const isJsonResponse = responseType?.indexOf("application/json") !== -1;
-      const responseData: unknown = isJsonResponse
-        ? await response.json()
-        : await response.text();
+      const responseData: unknown = isJsonResponse ? await response.json() : await response.text();
       if (!response.ok) {
         throw new ShopeeApiError(response.status, responseData);
       }
