@@ -31,7 +31,7 @@ async function fetchEndpoints() {
   if (!response.ok) {
     throw new Error(`Failed to fetch endpoints: ${response.status} ${response.statusText}`);
   }
-  const data = await response.json();
+  const data: any = await response.json();
   if (!data.modules) {
     throw new Error('Invalid response format: missing modules');
   }
