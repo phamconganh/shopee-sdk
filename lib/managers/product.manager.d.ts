@@ -1,6 +1,6 @@
 import { BaseManager } from "./base.manager.js";
 import { ShopeeConfig } from "../sdk.js";
-import { GetCommentParams, GetCommentResponse, ReplyCommentParams, ReplyCommentResponse, GetItemListParams, GetItemListResponse, GetItemBaseInfoParams, GetItemBaseInfoResponse, GetModelListParams, GetModelListResponse, UpdatePriceParams, UpdatePriceResponse, UpdateStockParams, UpdateStockResponse, DeleteItemParams, DeleteItemResponse, UnlistItemParams, UnlistItemResponse, GetProductCategoryParams, GetProductCategoryResponse, AddItemParams, AddItemResponse, UpdateItemParams, UpdateItemResponse, AddModelParams, AddModelResponse, UpdateModelParams, UpdateModelResponse, DeleteModelParams, DeleteModelResponse, InitTierVariationParams, InitTierVariationResponse, UpdateTierVariationParams, UpdateTierVariationResponse, SearchItemParams, SearchItemResponse, GetItemExtraInfoParams, GetItemExtraInfoResponse, GetAttributeTreeParams, GetAttributeTreeResponse, GetBrandListParams, GetBrandListResponse, RegisterBrandParams, RegisterBrandResponse, CategoryRecommendParams, CategoryRecommendResponse, GetItemLimitParams, GetItemLimitResponse, GetItemPromotionParams, GetItemPromotionResponse, BoostItemParams, BoostItemResponse, GetBoostedListResponse, GetRecommendAttributeParams, GetRecommendAttributeResponse, SearchAttributeValueListParams, SearchAttributeValueListResponse, GetMainItemListParams, GetMainItemListResponse, GetItemViolationInfoParams, GetItemViolationInfoResponse, GetWeightRecommendationParams, GetWeightRecommendationResponse, GetDirectItemListParams, GetDirectItemListResponse, GetItemContentDiagnosisResultParams, GetItemContentDiagnosisResultResponse, GetItemListByContentDiagnosisParams, GetItemListByContentDiagnosisResponse, AddKitItemParams, AddKitItemResponse, UpdateKitItemParams, UpdateKitItemResponse, GetKitItemInfoParams, GetKitItemInfoResponse, GetKitItemLimitParams, GetKitItemLimitResponse, GenerateKitImageParams, GenerateKitImageResponse, AddSspItemParams, AddSspItemResponse, GetSspInfoParams, GetSspInfoResponse, GetSspListParams, GetSspListResponse, LinkSspParams, LinkSspResponse, UnlinkSspParams, UnlinkSspResponse, UpdateSipItemPriceParams, UpdateSipItemPriceResponse, GetSizeChartListParams, GetSizeChartListResponse, GetSizeChartDetailParams, GetSizeChartDetailResponse, GetAllVehicleListParams, GetAllVehicleListResponse, GetVehicleListByCompatibilityDetailParams, GetVehicleListByCompatibilityDetailResponse, GetAitemByPitemIdParams, GetAitemByPitemIdResponse, GetDirectShopRecommendedPriceParams, GetDirectShopRecommendedPriceResponse, GetProductCertificationRuleParams, GetProductCertificationRuleResponse, SearchUnpackagedModelListParams, SearchUnpackagedModelListResponse, GetMartItemByOutletItemIdParams, GetMartItemByOutletItemIdResponse, GetMartItemMappingByIdParams, GetMartItemMappingByIdResponse, PublishItemToOutletShopParams, PublishItemToOutletShopResponse, GetVariationsParams, GetVariationsResponse } from "../schemas/product.js";
+import { GetCommentParams, GetCommentResponse, ReplyCommentParams, ReplyCommentResponse, GetItemListParams, GetItemListResponse, GetItemBaseInfoParams, GetItemBaseInfoResponse, GetModelListParams, GetModelListResponse, UpdatePriceParams, UpdatePriceResponse, UpdateStockParams, UpdateStockResponse, DeleteItemParams, DeleteItemResponse, UnlistItemParams, UnlistItemResponse, GetProductCategoryParams, GetProductCategoryResponse, AddItemParams, AddItemResponse, UpdateItemParams, UpdateItemResponse, AddModelParams, AddModelResponse, UpdateModelParams, UpdateModelResponse, DeleteModelParams, DeleteModelResponse, InitTierVariationParams, InitTierVariationResponse, UpdateTierVariationParams, UpdateTierVariationResponse, SearchItemParams, SearchItemResponse, GetItemExtraInfoParams, GetItemExtraInfoResponse, GetAttributeTreeParams, GetAttributeTreeResponse, GetBrandListParams, GetBrandListResponse, RegisterBrandParams, RegisterBrandResponse, CategoryRecommendParams, CategoryRecommendResponse, GetItemLimitParams, GetItemLimitResponse, GetItemPromotionParams, GetItemPromotionResponse, BoostItemParams, BoostItemResponse, GetBoostedListResponse, GetRecommendAttributeParams, GetRecommendAttributeResponse, SearchAttributeValueListParams, SearchAttributeValueListResponse, GetMainItemListParams, GetMainItemListResponse, GetItemViolationInfoParams, GetItemViolationInfoResponse, GetWeightRecommendationParams, GetWeightRecommendationResponse, GetDirectItemListParams, GetDirectItemListResponse, GetItemContentDiagnosisResultParams, GetItemContentDiagnosisResultResponse, GetItemListByContentDiagnosisParams, GetItemListByContentDiagnosisResponse, AddKitItemParams, AddKitItemResponse, UpdateKitItemParams, UpdateKitItemResponse, GetKitItemInfoParams, GetKitItemInfoResponse, GetKitItemLimitParams, GetKitItemLimitResponse, GenerateKitImageParams, GenerateKitImageResponse, UpdateSipItemPriceParams, UpdateSipItemPriceResponse, GetSizeChartListParams, GetSizeChartListResponse, GetSizeChartDetailParams, GetSizeChartDetailResponse, GetAllVehicleListParams, GetAllVehicleListResponse, GetVehicleListByCompatibilityDetailParams, GetVehicleListByCompatibilityDetailResponse, GetAitemByPitemIdParams, GetAitemByPitemIdResponse, GetDirectShopRecommendedPriceParams, GetDirectShopRecommendedPriceResponse, GetProductCertificationRuleParams, GetProductCertificationRuleResponse, SearchUnpackagedModelListParams, SearchUnpackagedModelListResponse, GetMartItemByOutletItemIdParams, GetMartItemByOutletItemIdResponse, GetMartItemMappingByIdParams, GetMartItemMappingByIdResponse, PublishItemToOutletShopParams, PublishItemToOutletShopResponse, GetVariationsParams, GetVariationsResponse, BatchAddItemParams, BatchAddItemResponse, BatchPublishItemToOutletShopParams, BatchPublishItemToOutletShopResponse, BatchUpdateOutletPriceParams, BatchUpdateOutletPriceResponse, BatchUpdateOutletStockParams, BatchUpdateOutletStockResponse, GetBatchTaskResultParams, GetBatchTaskResultResponse } from "../schemas/product.js";
 export declare class ProductManager extends BaseManager {
     constructor(config: ShopeeConfig);
     /**
@@ -452,11 +452,6 @@ export declare class ProductManager extends BaseManager {
     getKitItemInfo(params: GetKitItemInfoParams): Promise<GetKitItemInfoResponse>;
     getKitItemLimit(params: GetKitItemLimitParams): Promise<GetKitItemLimitResponse>;
     generateKitImage(params: GenerateKitImageParams): Promise<GenerateKitImageResponse>;
-    addSspItem(params: AddSspItemParams): Promise<AddSspItemResponse>;
-    getSspInfo(params: GetSspInfoParams): Promise<GetSspInfoResponse>;
-    getSspList(params?: GetSspListParams): Promise<GetSspListResponse>;
-    linkSsp(params: LinkSspParams): Promise<LinkSspResponse>;
-    unlinkSsp(params: UnlinkSspParams): Promise<UnlinkSspResponse>;
     updateSipItemPrice(params: UpdateSipItemPriceParams): Promise<UpdateSipItemPriceResponse>;
     getSizeChartList(params: GetSizeChartListParams): Promise<GetSizeChartListResponse>;
     getSizeChartDetail(params: GetSizeChartDetailParams): Promise<GetSizeChartDetailResponse>;
@@ -490,4 +485,39 @@ export declare class ProductManager extends BaseManager {
      * @throws {Error} When the API request fails or returns an error
      */
     getVariations(params: GetVariationsParams): Promise<GetVariationsResponse>;
+    /**
+     * Batch add items.
+     *
+     * @param params - The parameters for batch adding items
+     * @returns Promise resolving to the batch add item response
+     */
+    batchAddItem(params: BatchAddItemParams): Promise<BatchAddItemResponse>;
+    /**
+     * Batch publish items to outlet shop.
+     *
+     * @param params - The parameters for batch publishing items to outlet shop
+     * @returns Promise resolving to the batch publish response
+     */
+    batchPublishItemToOutletShop(params: BatchPublishItemToOutletShopParams): Promise<BatchPublishItemToOutletShopResponse>;
+    /**
+     * Batch update outlet price.
+     *
+     * @param params - The parameters for batch updating outlet price
+     * @returns Promise resolving to the batch update price response
+     */
+    batchUpdateOutletPrice(params: BatchUpdateOutletPriceParams): Promise<BatchUpdateOutletPriceResponse>;
+    /**
+     * Batch update outlet stock.
+     *
+     * @param params - The parameters for batch updating outlet stock
+     * @returns Promise resolving to the batch update stock response
+     */
+    batchUpdateOutletStock(params: BatchUpdateOutletStockParams): Promise<BatchUpdateOutletStockResponse>;
+    /**
+     * Get batch task result.
+     *
+     * @param params - The parameters for getting batch task result
+     * @returns Promise resolving to the batch task result response
+     */
+    getBatchTaskResult(params?: GetBatchTaskResultParams): Promise<GetBatchTaskResultResponse>;
 }

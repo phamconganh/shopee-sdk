@@ -1957,86 +1957,6 @@ export interface GenerateKitImageResponse extends FetchResponse<{
     };
 }> {
 }
-/**
- * SSP (Seller-Sponsored Product) params
- */
-export type AddSspItemParams = {
-    ssp_id?: number;
-    original_price?: number;
-    item_status?: string;
-    dimension?: Dimension;
-    logistic_info?: LogisticInfo[];
-    attribute_list?: ItemAttribute[];
-    pre_order?: PreOrder;
-    item_sku?: string;
-    condition?: string;
-    wholesale?: Wholesale[];
-    video_upload_id?: string[];
-    item_dangerous?: number;
-    tax_info?: TaxInfo;
-    seller_stock?: SellerStockUpdate[];
-    size_chart_info?: {
-        size_chart?: string;
-        size_chart_id?: number;
-    };
-    authorised_brand_id?: number;
-    model_list?: any[];
-};
-export interface AddSspItemResponse extends FetchResponse<{
-    item_id: number;
-}> {
-}
-export type GetSspInfoParams = {
-    item_id?: number;
-    ssp_id_list?: number[];
-    gtin_list?: string[];
-    oem_list?: string[];
-};
-export interface GetSspInfoResponse extends FetchResponse<{
-    ssp_info: any;
-}> {
-}
-export type GetSspListParams = {
-    offset?: number;
-    page_size?: number;
-};
-export interface GetSspListResponse extends FetchResponse<{
-    item_list: any[];
-    has_next_page: boolean;
-    next_offset: number;
-}> {
-}
-export type LinkSspParams = {
-    item_id?: number;
-    ssp_item_id?: number;
-    ssp_id?: number;
-    original_price?: number;
-    item_status?: string;
-    dimension?: Dimension;
-    logistic_info?: LogisticInfo[];
-    attribute_list?: ItemAttribute[];
-    pre_order?: PreOrder;
-    item_sku?: string;
-    condition?: string;
-    wholesale?: Wholesale[];
-    video_upload_id?: string[];
-    item_dangerous?: number;
-    tax_info?: TaxInfo;
-    seller_stock?: SellerStockUpdate[];
-    size_chart_info?: {
-        size_chart?: string;
-        size_chart_id?: number;
-    };
-    authorised_brand_id?: number;
-    model_list?: any[];
-};
-export interface LinkSspResponse extends BaseResponse {
-}
-export type UnlinkSspParams = {
-    item_id: number;
-};
-export interface UnlinkSspResponse extends BaseResponse {
-}
 export type UpdateSipItemPriceParams = {
     item_id: number;
     sip_item_price: number;
@@ -2330,5 +2250,154 @@ export type GetVariationsParams = {
 export interface GetVariationsResponse extends FetchResponse<{
     /** standardized tier variation tree */
     standardise_variation_list: StandardiseVariation[];
+}> {
+}
+/**
+ * Parameters for batch adding items
+ */
+export type BatchAddItemParams = {
+    /** The item list to batch add. The list size must be between 1 and 100. */
+    item_list: AddItemParams[];
+};
+/**
+ * Response for batch adding items
+ */
+export interface BatchAddItemResponse extends FetchResponse<{
+    /** The task ID of the batch add item task. */
+    task_id: number;
+}> {
+}
+/**
+ * Parameters for batch publishing items to outlet shop
+ */
+export type BatchPublishItemToOutletShopParams = {
+    /** The item list to batch publish to Outlet shop. The list size must be between 1 and 100. */
+    item_list: Array<{
+        /** The item ID of the item in the Mart shop. */
+        mart_item_id: number;
+        /** The shop ID of the Outlet shop. */
+        outlet_shop_id: number;
+        /** The outlet item data to publish. */
+        publish_item: PublishItemConfig;
+    }>;
+};
+/**
+ * Response for batch publishing items to outlet shop
+ */
+export interface BatchPublishItemToOutletShopResponse extends FetchResponse<{
+    /** The task ID of the batch publish outlet item task. */
+    task_id: number;
+}> {
+}
+/**
+ * Item configuration for batch updating outlet price
+ */
+export type BatchUpdateOutletPriceItem = {
+    /** The shop ID of the Outlet shop. */
+    outlet_shop_id: number;
+    /** The item ID of the item in the Outlet shop. */
+    item_id: number;
+    /** The price list of item models. The list size must be at least 1. */
+    price_list: Array<{
+        /** The model ID of the product. Empty for item without model. */
+        model_id?: number;
+        /** The original price to update. The value must be greater than 0. */
+        original_price: number;
+    }>;
+};
+/**
+ * Parameters for batch updating outlet price
+ */
+export type BatchUpdateOutletPriceParams = {
+    /** The item list to batch update price. The list size must be between 1 and 100. */
+    item_list: BatchUpdateOutletPriceItem[];
+};
+/**
+ * Response for batch updating outlet price
+ */
+export interface BatchUpdateOutletPriceResponse extends FetchResponse<{
+    /** The task ID of the batch update price task. */
+    task_id: number;
+}> {
+}
+/**
+ * Item configuration for batch updating outlet stock
+ */
+export type BatchUpdateOutletStockItem = {
+    /** The shop ID of the Outlet shop. */
+    outlet_shop_id: number;
+    /** The item ID of the item in the Outlet shop. */
+    item_id: number;
+    /** The stock list of item models. The list size must be at least 1. */
+    stock_list: Array<{
+        /** The model ID of the product. Empty for item without model. */
+        model_id?: number;
+        /** The seller stock by location. */
+        seller_stock: Array<{
+            /** location id */
+            location_id?: string;
+            /** The stock quantity of the location. */
+            stock: number;
+        }>;
+    }>;
+};
+/**
+ * Parameters for batch updating outlet stock
+ */
+export type BatchUpdateOutletStockParams = {
+    /** The item list to batch update stock. The list size must be between 1 and 100. */
+    item_list: BatchUpdateOutletStockItem[];
+};
+/**
+ * Response for batch updating outlet stock
+ */
+export interface BatchUpdateOutletStockResponse extends FetchResponse<{
+    /** The task ID of the batch update stock task. */
+    task_id: number;
+}> {
+}
+/**
+ * Parameters for getting batch task result
+ */
+export type GetBatchTaskResultParams = {
+    /** The task type. 1: price; 2: stock; 3: publish outlet; 4: add item. */
+    task_type?: number;
+    /** The task ID to query. */
+    task_id?: number;
+};
+/**
+ * Success record in batch task result
+ */
+export interface BatchTaskSuccessRecord {
+    /** The shop ID */
+    shop_id: number;
+    /** The item ID of the item in the shop. */
+    item_id: number;
+    /** The model ID of the model in the shop. */
+    model_id: number;
+}
+/**
+ * Failed record in batch task result
+ */
+export interface BatchTaskFailedRecord {
+    /** The shop ID */
+    shop_id: number;
+    /** The item ID of the item in the shop. */
+    item_id: number;
+    /** The model ID of the model in the shop. */
+    model_id: number;
+    /** The failed reason. */
+    failed_reason: string;
+}
+/**
+ * Response for getting batch task result
+ */
+export interface GetBatchTaskResultResponse extends FetchResponse<{
+    /** The publish status. 1: ongoing; 2: finished. */
+    publish_status: number;
+    /** The batch task success records. */
+    success_list?: BatchTaskSuccessRecord[];
+    /** The batch task failed records. */
+    failed_list?: BatchTaskFailedRecord[];
 }> {
 }
